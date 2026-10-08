@@ -1,0 +1,809 @@
+.dashboard {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: calc(100vh - 65px);
+    padding: 2rem clamp(1rem, 3vw, 2.5rem) 3rem;
+    background: #f5f7fb;
+    color: #172033;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+        BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.dashboard button {
+    font: inherit;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.dashboard-header,
+.panel-heading,
+.calendar-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.dashboard-header {
+    margin-bottom: 1.75rem;
+}
+
+.dashboard-eyebrow,
+.panel-kicker {
+    margin: 0 0 0.4rem;
+    color: #8a94a8;
+    font-size: 0.68rem;
+    font-weight: 750;
+    letter-spacing: 0.13em;
+}
+
+.dashboard-header h1 {
+    margin: 0;
+    color: #192338;
+    font-size: clamp(1.55rem, 3vw, 2rem);
+    letter-spacing: -0.04em;
+}
+
+.dashboard-intro {
+    margin: 0.4rem 0 0;
+    color: #8791a3;
+    font-size: 0.92rem;
+}
+
+
+/* =========================================
+   ADD BUTTON
+========================================= */
+
+.dashboard-add-button {
+    flex: 0 0 auto;
+    padding: 0.75rem 1.05rem;
+    border: 0;
+    border-radius: 0.7rem;
+    background: #6257e8;
+    box-shadow: 0 5px 12px rgb(98 87 232 / 20%);
+    color: white;
+    font-weight: 650;
+    cursor: pointer;
+    transition:
+        transform 150ms ease,
+        background 150ms ease;
+}
+
+.dashboard-add-button:hover {
+    background: #5146d5;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.stat-card,
+.dashboard-panel,
+.category-card {
+    border: 1px solid #edf0f5;
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0 5px 20px rgb(31 45 74 / 3%);
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    min-width: 0;
+    padding: 1rem;
+}
+
+.stat-icon,
+.category-icon {
+    display: grid;
+    flex: 0 0 auto;
+    width: 2.55rem;
+    height: 2.55rem;
+    place-items: center;
+    border-radius: 0.8rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.stat-purple,
+.category-icon.violet {
+    background: #f0edff;
+    color: #6858e8;
+}
+
+.stat-green,
+.category-icon.green {
+    background: #e8f8f0;
+    color: #27a56d;
+}
+
+.stat-blue,
+.category-icon.blue {
+    background: #eaf2ff;
+    color: #4784e8;
+}
+
+.stat-orange,
+.category-icon.orange {
+    background: #fff2e5;
+    color: #ed9743;
+}
+
+.stat-card p {
+    margin: 0 0 0.2rem;
+    color: #8993a5;
+    font-size: 0.78rem;
+}
+
+.stat-card strong {
+    color: #202a3e;
+    font-size: 1.35rem;
+    line-height: 1;
+}
+
+
+/* =========================================
+   MAIN COLUMNS
+========================================= */
+
+.dashboard-columns {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.6fr)
+        minmax(280px, 0.9fr);
+    align-items: start;
+    gap: 1.25rem;
+}
+
+.dashboard-panel {
+    min-width: 0;
+    padding: 1.35rem;
+}
+
+.panel-heading,
+.calendar-heading {
+    margin-bottom: 1.05rem;
+}
+
+.panel-heading h2,
+.calendar-heading h2,
+.categories-section h2 {
+    margin: 0;
+    color: #202a3e;
+    font-size: 1.08rem;
+    letter-spacing: -0.02em;
+}
+
+
+/* =========================================
+   VIEW ALL BUTTON
+========================================= */
+
+.text-button {
+    border: 0;
+    background: none;
+    color: #645be4;
+    font-size: 0.8rem;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+.text-button:hover {
+    color: #4237c2;
+}
+
+
+/* =========================================
+   TODAY'S TASKS
+========================================= */
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+
+    /*
+       IMPORTANT:
+       This controls the visible task area.
+       Approximately 3 tasks will be visible.
+    */
+    max-height: 300px;
+
+    /*
+       Remaining tasks can be scrolled.
+    */
+    overflow-y: auto;
+
+    /*
+       Small space for scrollbar.
+    */
+    padding-right: 0.4rem;
+}
+
+
+/* =========================================
+   TASK SCROLLBAR
+========================================= */
+
+.task-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.task-list::-webkit-scrollbar-track {
+    background: #f5f7fb;
+    border-radius: 10px;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+    background: #c8ceda;
+    border-radius: 10px;
+}
+
+.task-list::-webkit-scrollbar-thumb:hover {
+    background: #aeb6c5;
+}
+
+
+/* =========================================
+   TASK
+========================================= */
+
+.dashboard-task {
+    display: flex;
+    gap: 0.85rem;
+    padding: 1rem 0;
+    border-top: 1px solid #f0f2f6;
+    cursor: pointer;
+}
+
+.dashboard-task:focus-visible {
+    outline: 2px solid #6257e8;
+    outline-offset: 3px;
+    border-radius: 0.4rem;
+}
+
+.dashboard-task:first-child {
+    border-top: 0;
+}
+
+.task-check {
+    flex: 0 0 auto;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-top: 0.15rem;
+    border: 1.5px solid #c8ceda;
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+}
+
+.task-check:hover {
+    border-color: #6257e8;
+    background: #f3f1ff;
+}
+
+.dashboard-task-content {
+    min-width: 0;
+    flex: 1;
+}
+
+.task-title-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.task-title-line h3 {
+    margin: 0;
+    color: #283247;
+    font-size: 0.9rem;
+    font-weight: 650;
+}
+
+.dashboard-task-content > p {
+    margin: 0.35rem 0 0.65rem;
+    color: #939cad;
+    font-size: 0.78rem;
+}
+
+
+/* =========================================
+   TASK META
+========================================= */
+
+.task-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.45rem;
+    color: #8791a3;
+    font-size: 0.7rem;
+}
+
+.category-tag,
+.priority-tag,
+.important-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 99px;
+    background: #f3f5f9;
+    color: #707b8e;
+    font-size: 0.67rem;
+    font-weight: 600;
+}
+
+.priority-high {
+    background: #fff0ee;
+    color: #df6e5e;
+}
+
+.priority-medium {
+    background: #fff6e8;
+    color: #c58b38;
+}
+
+.priority-low {
+    background: #eef7f2;
+    color: #4b9c72;
+}
+
+.important-badge {
+    background: #fff6e8;
+    color: #bf8734;
+}
+
+.empty-tasks {
+    color: #8791a3;
+    font-size: 0.85rem;
+}
+
+.task-detail-backdrop {
+    position: fixed;
+    z-index: 20;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    background: rgb(23 32 51 / 45%);
+}
+
+.task-detail-card {
+    box-sizing: border-box;
+    width: min(100%, 34rem);
+    max-height: min(90vh, 48rem);
+    overflow-y: auto;
+    padding: 1.5rem;
+    border: 1px solid #edf0f5;
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0 20px 60px rgb(23 32 51 / 20%);
+}
+
+.task-detail-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.task-detail-heading h2 {
+    margin: 0;
+    color: #202a3e;
+    font-size: 1.25rem;
+}
+
+.task-detail-close {
+    display: grid;
+    flex: 0 0 auto;
+    width: 2rem;
+    height: 2rem;
+    place-items: center;
+    border: 1px solid #edf0f5;
+    border-radius: 0.55rem;
+    background: #fff;
+    color: #657087;
+    font-size: 1.35rem;
+    cursor: pointer;
+}
+
+.task-detail-description {
+    margin: 1rem 0;
+    color: #657087;
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+.task-detail-meta {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f0f2f6;
+}
+
+.task-detail-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1rem;
+}
+
+.task-complete-button,
+.task-delete-button {
+    padding: 0.65rem 0.85rem;
+    border: 1px solid transparent;
+    border-radius: 0.6rem;
+    font-size: 0.82rem;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+.task-complete-button {
+    background: #e8f8f0;
+    color: #218558;
+}
+
+.task-complete-button:hover:not(:disabled) {
+    background: #d7f2e5;
+}
+
+.task-complete-button:disabled {
+    cursor: default;
+    opacity: 0.7;
+}
+
+.task-delete-button {
+    border-color: #f2d8d5;
+    background: #fff4f2;
+    color: #c64f42;
+}
+
+.task-delete-button:hover {
+    background: #ffe8e4;
+}
+
+.task-actions-section h3 {
+    margin: 1.15rem 0 0.65rem;
+    color: #283247;
+    font-size: 0.95rem;
+}
+
+.empty-actions {
+    margin: 0.5rem 0;
+    color: #8791a3;
+    font-size: 0.82rem;
+}
+
+.task-action-list {
+    display: grid;
+    gap: 0.65rem;
+    max-height: 10rem;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.task-action-list li {
+    display: grid;
+    gap: 0.3rem;
+    padding: 0.7rem 0.8rem;
+    border-radius: 0.65rem;
+    background: #f7f8fc;
+    color: #424d62;
+    font-size: 0.85rem;
+}
+
+.task-action-list time {
+    color: #8993a5;
+    font-size: 0.7rem;
+}
+
+.task-action-form {
+    display: grid;
+    gap: 0.6rem;
+    margin-top: 1rem;
+}
+
+.task-action-form label {
+    color: #525d72;
+    font-size: 0.8rem;
+    font-weight: 650;
+}
+
+.task-action-form textarea {
+    box-sizing: border-box;
+    width: 100%;
+    resize: vertical;
+    padding: 0.75rem;
+    border: 1px solid #dfe3ec;
+    border-radius: 0.65rem;
+    color: #283247;
+    font: inherit;
+    font-size: 0.85rem;
+}
+
+.task-action-form textarea:focus {
+    border-color: #8b83ef;
+    outline: 2px solid rgb(98 87 232 / 15%);
+}
+
+.task-action-form .dashboard-add-button {
+    justify-self: end;
+}
+
+.task-action-form .dashboard-add-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+
+/* =========================================
+   CALENDAR
+========================================= */
+
+.calendar-heading {
+    align-items: flex-end;
+}
+
+.calendar-controls {
+    display: flex;
+    gap: 0.35rem;
+}
+
+.calendar-controls button {
+    display: grid;
+    width: 1.9rem;
+    height: 1.9rem;
+    place-items: center;
+    border: 1px solid #edf0f5;
+    border-radius: 0.55rem;
+    background: #fff;
+    color: #657087;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.calendar-controls button:hover {
+    border-color: #d8d4ff;
+    color: #6257e8;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    text-align: center;
+}
+
+.calendar-weekdays {
+    margin: 1.15rem 0 0.45rem;
+    color: #a0a8b7;
+    font-size: 0.68rem;
+    font-weight: 650;
+}
+
+.calendar-days {
+    row-gap: 0.25rem;
+}
+
+.calendar-day {
+    position: relative;
+    display: grid;
+    aspect-ratio: 1;
+    max-width: 2.45rem;
+    place-items: center;
+    justify-self: center;
+    width: 100%;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: #4c566b;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+.calendar-day:hover {
+    background: #f3f1ff;
+}
+
+.calendar-day.today {
+    box-shadow: inset 0 0 0 1px #c8c2ff;
+    color: #6155dc;
+    font-weight: 700;
+}
+
+.calendar-day.selected {
+    background: #6257e8;
+    color: #fff;
+    box-shadow: none;
+}
+
+.calendar-day i {
+    position: absolute;
+    right: 0.25rem;
+    bottom: 0.18rem;
+    width: 0.23rem;
+    height: 0.23rem;
+    border-radius: 50%;
+    background: #efa449;
+}
+
+.calendar-day.selected i {
+    background: #fff;
+}
+
+.selected-date {
+    margin: 1rem 0 0;
+    padding-top: 0.8rem;
+    border-top: 1px solid #f0f2f6;
+    color: #8993a5;
+    font-size: 0.72rem;
+}
+
+.selected-date strong {
+    color: #525d72;
+    font-weight: 650;
+}
+
+
+/* =========================================
+   CATEGORIES
+========================================= */
+
+.categories-section {
+    margin-top: 1.4rem;
+}
+
+.category-heading {
+    margin: 0 0 0.8rem;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.85rem;
+}
+
+.category-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem;
+    text-align: left;
+    cursor: pointer;
+    transition:
+        transform 150ms ease,
+        box-shadow 150ms ease;
+}
+
+.category-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgb(31 45 74 / 8%);
+}
+
+.category-icon {
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: 0.7rem;
+}
+
+.category-name {
+    display: block;
+    color: #303a4e;
+    font-size: 0.8rem;
+    font-weight: 650;
+}
+
+.category-count {
+    display: block;
+    margin-top: 0.2rem;
+    color: #9aa3b2;
+    font-size: 0.68rem;
+}
+
+.category-arrow {
+    margin-left: auto;
+    color: #a8afbd;
+    font-size: 1.2rem;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1050px) {
+
+    .dashboard-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 760px) {
+
+    .dashboard-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .task-list {
+        max-height: 300px;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .dashboard {
+        padding: 1.25rem 0.85rem 2rem;
+    }
+
+    .dashboard-header {
+        align-items: flex-start;
+    }
+
+    .dashboard-add-button {
+        padding: 0.65rem 0.75rem;
+        font-size: 0.8rem !important;
+    }
+
+    .dashboard-stats {
+        gap: 0.65rem;
+    }
+
+    .stat-card {
+        gap: 0.55rem;
+        padding: 0.75rem 0.6rem;
+    }
+
+    .stat-icon {
+        width: 2.1rem;
+        height: 2.1rem;
+    }
+
+    .stat-card p {
+        font-size: 0.68rem;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.55rem;
+    }
+
+    .category-card {
+        gap: 0.45rem;
+        padding: 0.7rem 0.55rem;
+    }
+
+    /*
+       Smaller height on mobile
+       so approximately 3 tasks remain visible.
+    */
+    .task-list {
+        max-height: 280px;
+    }
+}

@@ -1,0 +1,320 @@
+/* Page */
+
+.todo-page {
+    box-sizing: border-box;
+    min-height: calc(100vh - 65px);
+    padding: 40px 20px;
+    background: #f5f7fb;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Page title */
+
+.page-title {
+    max-width: 850px;
+    margin: 0 auto 20px;
+
+    font-size: 28px;
+    font-weight: 700;
+
+    color: #1f2937;
+}
+
+
+/* Form */
+
+.addtaskForm {
+    max-width: 850px;
+    margin: 0 auto;
+
+    padding: 30px;
+
+    background: #ffffff;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.08);
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 22px;
+}
+
+
+/* Form group */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+/* Full width */
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+
+/* Labels */
+
+.form-group label {
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #374151;
+}
+
+
+/* Inputs */
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group select,
+.form-group textarea {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 14px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #1f2937;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+
+/* Focus */
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+
+    border-color: #4f46e5;
+
+    box-shadow:
+        0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+
+/* Textarea */
+
+.form-group textarea {
+
+    min-height: 120px;
+
+    resize: vertical;
+
+    line-height: 1.5;
+}
+
+
+/* Additional options */
+
+.additional-options {
+
+    padding: 20px;
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+}
+
+
+/* Heading */
+
+.additional-options h5 {
+
+    margin: 0 0 18px;
+
+    font-size: 15px;
+
+    color: #374151;
+}
+
+.additional-options h5 span {
+
+    margin-left: 5px;
+
+    font-weight: 400;
+
+    color: #9ca3af;
+}
+
+
+/* Checkbox */
+
+.checkbox-option {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 14px;
+
+    font-size: 14px;
+
+    color: #4b5563;
+
+    cursor: pointer;
+}
+
+.checkbox-option input {
+
+    width: 16px;
+
+    height: 16px;
+
+    cursor: pointer;
+}
+
+
+/* File */
+
+.file-upload {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-top: 8px;
+}
+
+.file-upload label {
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #374151;
+}
+
+.file-upload input {
+
+    padding: 8px;
+
+    border: 1px dashed #cbd5e1;
+
+    border-radius: 7px;
+
+    background: white;
+
+    font-size: 13px;
+}
+
+
+/* Buttons */
+
+.form-actions {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+    margin-top: 5px;
+}
+
+
+.form-actions button {
+
+    padding: 11px 22px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+/* Cancel */
+
+.cancel-btn {
+
+    background: #ffffff;
+
+    border: 1px solid #d1d5db;
+
+    color: #374151;
+}
+
+.cancel-btn:hover {
+
+    background: #f3f4f6;
+}
+
+
+/* Add Task */
+
+.add-task-btn {
+
+    border: none;
+
+    background: #4f46e5;
+
+    color: white;
+}
+
+.add-task-btn:hover {
+
+    background: #4338ca;
+}
+
+
+/* Mobile */
+
+@media (max-width: 650px) {
+
+    .addtaskForm {
+
+        grid-template-columns: 1fr;
+
+        padding: 20px;
+    }
+
+    .full-width {
+
+        grid-column: auto;
+    }
+
+    .form-actions {
+
+        flex-direction: column;
+    }
+
+    .form-actions button {
+
+        width: 100%;
+    }
+}
